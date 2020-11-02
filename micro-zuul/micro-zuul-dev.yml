@@ -6,6 +6,19 @@ spring:
   main:
     allow-bean-definition-overriding: true
 
+zuul:
+  host:
+    connect-timeout-millis: 10000
+    socket-timeout-millis: 60000
+  routes:
+    test:
+      url: micro-client
+      path: /test/**
+
+micro:
+  sign:
+    secret: 41ef3d95172afab5f1a77c392a0bfcae
+
 hystrix:
   command:
     fallbackcmd:

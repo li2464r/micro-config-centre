@@ -1,36 +1,24 @@
 spring:
   redis:
-    host: localhost
+    host: www.ljq.com
     password:
     port: 6379
   main:
     allow-bean-definition-overriding: true
-  cloud:
-    gateway:
-      discovery:
-        locator:
-          enabled: true
-          lower-case-service-id: true
-      routes:
-        - id: test
-          uri: lb://micro-client
-          predicates:
-            - Path= /test/**
-          filters:
-            - StripPrefix=1
-      default-filters:
-        - name: Hystrix
-          args:
-            name: fallbackcmd
-            fallbackUri: forward:/fallback
-        - name: RequestRateLimiter
-          args:
-            # 令牌桶的容量
-            redis-rate-limiter.replenishRate: 1
-            # 流量
-            redis-rate-limiter.burstCapacity: 3
-            # 过滤规则
-            key-resolver: "#{@remoteAddrKeyResolver}"
+
+zuul:
+  host:
+    connect-timeout-millis: 10000
+    socket-timeout-millis: 60000
+  routes:
+    test:
+      url: micro-client
+      path: /test/**
+
+micro:
+  sign:
+    secret: 41ef3d95172afab5f1a77c392a0bfcae
+
 hystrix:
   command:
     fallbackcmd:
