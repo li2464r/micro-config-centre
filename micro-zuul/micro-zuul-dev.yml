@@ -28,3 +28,5 @@ hystrix:
           thread:
             timeoutInMilliseconds: 3000
   shareSecurityContext: true
+
+  docker run -p 8302:8302 -v /micro:/micro --name micro-zuul micro-zuul:1.0.0 --spring.profiles.active=test
