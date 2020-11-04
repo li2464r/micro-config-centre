@@ -1,9 +1,3 @@
-server:
-  port: 8306
-  tomcat:
-    uri-encoding: UTF-8
-    basedir: E:/tmp
-
 spring:
   application:
     name: micro-auth
