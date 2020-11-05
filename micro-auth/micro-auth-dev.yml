@@ -2,7 +2,7 @@ spring:
   application:
     name: micro-auth
   redis:
-    url: www.ljq.com
+    url: 192.168.1.125
     password:
     pool: 6379
   datasource:
