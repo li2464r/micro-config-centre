@@ -14,6 +14,9 @@ zuul:
     test:
       url: micro-client
       path: /test/**
+    auth:
+      url: micro-auth
+      path: /auth/**
 
 micro:
   sign:
